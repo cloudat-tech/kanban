@@ -32,7 +32,7 @@ jobs:
             context: ./kanban-app
           - dockerfile: ./kanban-ui/Dockerfile
             image: cloudattech.jfrog.io/container-repo/kanban-ui
-            context: ./kanban-app
+            context: ./kanban-ui
     permissions:
       contents: read
       packages: write
