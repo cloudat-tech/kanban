@@ -22,12 +22,14 @@ spec:
           ports:
             - containerPort: 8080
           env:
+            - name: DB_SERVER
+              value: "my-postgresdb.postgres.database.azure.com"
             - name: POSTGRES_USER
-              value: "pgsql_admin"
+              value: "prizejay1"
             - name: POSTGRES_PASSWORD
               value: "r0VHS2s_HCnKYTgmyFTqUg"
             - name: POSTGRES_DB
-              value: "kanban-pgsql-db"
+              value: "flexibleserverdb"
           resources:
             limits:
               memory: "256Mi"
