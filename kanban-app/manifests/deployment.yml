@@ -22,13 +22,13 @@ spec:
           ports:
             - containerPort: 8080
           env:
-            - name: DATABASE_HOST
-              value: "kanban-pgsql-db"
-            - name: DATABASE_USER
+            - name: DB_SERVER
+              value: "kanban-pgsqldb-ext"
+            - name: POSTGRES_USER
               value: "pgsql_admin"
-            - name: DATABASE_PASSWORD
+            - name: POSTGRES_PASSWORD
               value: "r0VHS2s_HCnKYTgmyFTqUg"
-            - name: DATABASE_NAME
+            - name: POSTGRES_DB
               value: "kanban-pgsql-db"
           resources:
             limits:

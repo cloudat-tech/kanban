@@ -1,7 +1,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: kanban-pgsql-db
+  name: kanban-pgsqldb-ext
 spec:
   type: ExternalName
   externalName: kanban-pgsql-db.postgres.database.azure.com
