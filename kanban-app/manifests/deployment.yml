@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: kanban-app
-          image: cloudattech.jfrog.io/container-repo:kanban-app
+          image: cloudattech.jfrog.io/container-repo/kanban-app:latest
           ports:
             - containerPort: 8080
           env:
