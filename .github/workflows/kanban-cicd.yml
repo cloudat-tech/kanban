@@ -123,3 +123,5 @@ jobs:
               kanban-app/manifests/kanban_app_svc.yml
               kanban-app/manifests/external_db_svc.yml
               kanban-app/manifests/route.yml
+            imagepullsecrets: |
+              kanban-app-secrets
