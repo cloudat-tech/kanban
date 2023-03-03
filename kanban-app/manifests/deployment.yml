@@ -23,7 +23,7 @@ spec:
             - containerPort: 8080
           env:
             - name: DB_SERVER
-              value: "kanban-pgsqldb-ext"
+              value: "kanban-pgsql-db.postgres.database.azure.com"
             - name: POSTGRES_USER
               value: "pgsql_admin"
             - name: POSTGRES_PASSWORD
