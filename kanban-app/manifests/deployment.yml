@@ -25,11 +25,11 @@ spec:
             - name: DATABASE_HOST
               value: "kanban-pgsql-db"
             - name: DATABASE_USER
-              value: "prizejay1"
+              value: "pgsql_admin"
             - name: DATABASE_PASSWORD
               value: "r0VHS2s_HCnKYTgmyFTqUg"
             - name: DATABASE_NAME
-              value: "flexibleserverdb"
+              value: "kanban-pgsql-db"
           resources:
             limits:
               memory: "256Mi"

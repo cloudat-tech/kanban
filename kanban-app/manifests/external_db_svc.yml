@@ -4,4 +4,4 @@ metadata:
   name: kanban-pgsql-db
 spec:
   type: ExternalName
-  externalName: my-postgresdb.postgres.database.azure.com
+  externalName: kanban-pgsql-db.postgres.database.azure.com
