@@ -70,3 +70,43 @@ jobs:
             #run: |
              #rm -rf /tmp/.buildx-cache
              #mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+  Deploy:      
+    name: Deploy
+    runs-on: ubuntu-20.04
+    needs: [ Build ]
+    steps:
+        - name: Checkout Sourcecode
+          uses: actions/checkout@v3
+
+        - name: Import ARO Cluster Secrets
+          id: import-secrets
+          uses: hashicorp/vault-action@v2
+          with:
+            method: token
+            url: https://vault-public-vault-baebe7c1.3dda8bad.z1.hashicorp.cloud:8200
+            namespace: admin/
+            token: ${{ env.VAULT_TOKEN }}
+            tlsSkipVerify: false
+            #caCertificate: ${{ secrets.VAULT_CA_CERT }}
+            secrets: |
+                dev/data/aro-cluster OPENSHIFT_SERVER | OPENSHIFT_SERVER ; 
+                dev/data/aro-cluster OPENSHIFT_TOKEN | OPENSHIFT_TOKEN
+        - name: Login to ARO Cluster
+          id: set-aro-context
+          uses: redhat-actions/oc-login@v1
+          with:
+            openshift_server_url: ${{ steps.import-secrets.outputs.OPENSHIFT_SERVER }}
+            openshift_token: ${{ steps.import-secrets.outputs.OPENSHIFT_TOKEN }}
+            insecure_skip_tls_verify: true
+            namespace: ${{ env.OPENSHIFT_NAMESPACE }}
+
+        - name: Create and expose app
+          id: deploy-app
+          uses: Azure/k8s-deploy@v4
+          with:
+            namespace: ${{ env.OPENSHIFT_NAMESPACE }}
+            manifests: |
+              manifests/deployment.yml
+              manifests/kanban-app-svc.yml
+              manifest/external_db_svc.yml
+              manigests/route.yml
