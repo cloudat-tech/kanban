@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kanban-app
+  labels:
+    app: kanban-app
+    group: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kanban-app
+  template:
+    metadata:
+      labels:
+        app: kanban-app
+        group: backend
+    spec:
+      containers:
+        - name: kanban-app
+          image: cloudattech.jfrog.io/container-repo:kanban-app
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DATABASE_HOST
+              value: "kanban-pgsql-db"
+            - name: DATABASE_USER
+              value: "prizejay1"
+            - name: DATABASE_PASSWORD
+              value: "r0VHS2s_HCnKYTgmyFTqUg"
+            - name: DATABASE_NAME
+              value: "flexibleserverdb"
+          resources:
+            limits:
+              memory: "256Mi"
+              cpu: "500m"

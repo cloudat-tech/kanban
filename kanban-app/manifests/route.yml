@@ -1,0 +1,9 @@
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: kanan-app-route
+spec:
+  to:
+    kind: Service
+    name: kanban-app
