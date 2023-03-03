@@ -29,8 +29,10 @@ jobs:
         include:
           - dockerfile: ./kanban-app/Dockerfile
             image: cloudattech.jfrog.io/container-repo/kanban-app
+            context: ./kanban-app
           - dockerfile: ./kanban-ui/Dockerfile
             image: cloudattech.jfrog.io/container-repo/kanban-ui
+            context: ./kanban-app
     permissions:
       contents: read
       packages: write
@@ -73,7 +75,7 @@ jobs:
         - name: Build and push
           uses: docker/build-push-action@v4
           with:
-            context: .
+            context: ${{ matrix.context }}
             file: ${{ matrix.dockerfile }}
             push: true
             tags: ${{ steps.meta.outputs.tags }}
