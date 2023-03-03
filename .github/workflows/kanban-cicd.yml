@@ -107,6 +107,6 @@ jobs:
             namespace: ${{ env.OPENSHIFT_NAMESPACE }}
             manifests: |
               kanban-app/manifests/deployment.yml
-              kanban-app/manifests/kanban-app-svc.yml
+              kanban-app/manifests/kanban_app_svc.yml
               kanban-app/manifest/external_db_svc.yml
               kanban-app/manigests/route.yml
