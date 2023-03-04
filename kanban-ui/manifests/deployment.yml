@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: kanban-ui
-          image: cloudattech.jfrog.io/container-repo/kanban-ui:latest
+          image: cloudattech.jfrog.io/container-repo/kanban-ui:main
           ports:
             - containerPort: 80
           resources:
