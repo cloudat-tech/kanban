@@ -1,0 +1,9 @@
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: kanan-ui-route
+spec:
+  to:
+    kind: Service
+    name: kanban-ui
