@@ -132,9 +132,7 @@ jobs:
             manifests: |
               kanban-app/manifests/deployment.yml
               kanban-app/manifests/kanban_app_svc.yml
-              kanban-app/manifests/route.yml
               kanban-ui/manifests/deployment.yml
               kanban-ui/manifests/kanban_ui_svc.yml
-              kanban-ui/manifests/route.yml
             imagepullsecrets: |
               kanban-app-secrets
