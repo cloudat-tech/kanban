@@ -9,8 +9,8 @@ env:
   #OPENSHIFT_SERVER: ${{ secrets.OPENSHIFT_SERVER }}
   #OPENSHIFT_TOKEN: ${{ secrets.OPENSHIFT_TOKEN }}
   OPENSHIFT_NAMESPACE: "amol-tapase-dev"
-  APP_NAME: "kanban-app"
-  TAG: "latest"
+  APP_NAME: "kanban-ui"
+  TAG: "main"
 
 #on: [ workflow_dispatch]
 on:
@@ -55,7 +55,7 @@ jobs:
         - name: Build and push
           uses: docker/build-push-action@v4
           with:
-           context: ./kanban-app
+           context: ./kanban-ui
            #file: ./kanban-app/Dockerfile
            push: true
            tags: |
@@ -119,8 +119,7 @@ jobs:
           with:
             namespace: ${{ env.OPENSHIFT_NAMESPACE }}
             manifests: |
-              kanban-app/manifests/deployment.yml
-              kanban-app/manifests/kanban_app_svc.yml
-              kanban-app/manifests/route.yml
+              manifests/kanban-ui-frontend-deployment.yml
+              manifests/kanban-ui-frontend-service.yml
             imagepullsecrets: |
               kanban-app-secrets
