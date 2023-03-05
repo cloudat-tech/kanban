@@ -7,7 +7,8 @@ COPY . .
 RUN npm run build
 
 ### STAGE 2: Run ###
-FROM nginx:1.17.1-alpine
+#FROM nginx:1.17.1-alpine
+FROM nginx:alpine
 RUN  touch /var/run/nginx.pid && \
      chown -R nginx:nginx /var/cache/nginx /var/run/nginx.pid
 USER nginx
