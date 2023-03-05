@@ -130,9 +130,9 @@ jobs:
           with:
             namespace: ${{ env.OPENSHIFT_NAMESPACE }}
             manifests: |
-              kanban-ui/manifests/deployment.yml
-              kanban-ui/manifests/kanban_ui_svc.yml
-              kanban-app/manifests/deployment.yml
-              kanban-app/manifests/kanban_app_svc.yml
+              kanban-app/manifests/kanban-app-backend-deployment.yml
+              kanban-app/manifests/kanban-app-backend-service.yml
+              kanban-app/manifests/kanban-ui-frontend-deployment.yml
+              kanban-app/manifests/kanban-ui-frontend-service.yml
             imagepullsecrets: |
               kanban-app-secrets
