@@ -9,7 +9,7 @@ RUN npm run build
 ### STAGE 2: Run ###
 #FROM nginx:1.17.1-alpine
 #FROM nginx:alpine
-FROM nginxinc/nginx-unprivileged
+FROM twalter/openshift-nginx:stable
 COPY default.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /usr/src/app/dist/kanban-ui /usr/share/nginx/html
 EXPOSE 8081
