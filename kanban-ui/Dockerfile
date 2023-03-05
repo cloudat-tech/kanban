@@ -8,9 +8,9 @@ RUN npm run build
 
 ### STAGE 2: Run ###
 FROM nginx:1.17.1-alpine
-COPY default.conf /etc/nginx/conf.d/default.conf
-COPY --from=build /usr/src/app/dist/kanban-ui /usr/share/nginx/html
-RUN chmod -R 770 /var/cache/nginx /var/run /var/log/nginx
-#RUN chmod g+rwx /var/cache/nginx /var/run /var/log/nginx
-#RUN sed -i.bak 's/^user/#user/' /etc/nginx/nginx.conf
+RUN  touch /var/run/nginx.pid && \
+     chown -R nginx:nginx /var/cache/nginx /var/run/nginx.pid
+USER nginx
+COPY --chown=nginx:nginx default.conf /etc/nginx/conf.d/default.conf
+COPY --from=build --chown=nginx:nginx /usr/src/app/dist/kanban-ui /usr/share/nginx/html
 EXPOSE 8081
