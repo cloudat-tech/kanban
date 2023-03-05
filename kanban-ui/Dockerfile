@@ -1,5 +1,6 @@
 ### STAGE 1: Build ###
-FROM node:12.7-alpine AS build
+#FROM node:12.7-alpine AS build
+FROM node:19.7-alpine AS build
 WORKDIR /usr/src/app
 COPY package.json ./
 RUN npm install
@@ -12,6 +13,8 @@ RUN npm run build
 #FROM nginxinc/nginx-unprivileged
 FROM nginxinc/nginx-unprivileged:1.23-alpine
 COPY default.conf /etc/nginx/conf.d/default.conf
-COPY --from=build /usr/src/app/dist/kanban-ui /usr/share/nginx/html
-EXPOSE 8081
+WORKDIR /code
+COPY --from=BUILD /usr/src/app/dist .
+#COPY --from=build /usr/src/app/dist/kanban-ui /usr/share/nginx/html
+EXPOSE 8080:8080
 CMD ["nginx", "-g", "daemon off;"]
