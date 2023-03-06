@@ -55,7 +55,7 @@ jobs:
         - name: Build and push
           uses: docker/build-push-action@v4
           with:
-           context: ./kanban-ui
+           context: ./kanban-app
            #file: ./kanban-app/Dockerfile
            push: true
            tags: |
