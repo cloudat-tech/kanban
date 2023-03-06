@@ -19,9 +19,6 @@ spec:
       containers:
         - name: kanban-ui
           image: cloudattech.jfrog.io/container-repo/kanban-ui:main
-          securityContext:
-            runAsUser: 101
-            allowPrivilegeEscalation: true
           ports:
             - containerPort: 8080
           resources:
