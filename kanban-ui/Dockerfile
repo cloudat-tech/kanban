@@ -11,10 +11,6 @@ RUN npm run build
 #FROM nginx:1.17.1-alpine
 #FROM nginx:alpine
 #FROM nginxinc/nginx-unprivileged
-FROM nginxinc/nginx-unprivileged:1.23-alpine
+FROM nginxinc/nginx-unprivileged:1.12.6-alpine
 COPY default.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /usr/src/app/dist/kanban-ui /usr/share/nginx/html
-RUN mkdir -p /var/cache/nginx/client_temp
-RUN chown -R nginx:nginx /var/cache/nginx/client_temp
-EXPOSE 8080:8080
-CMD ["nginx", "-g", "daemon off;"]
