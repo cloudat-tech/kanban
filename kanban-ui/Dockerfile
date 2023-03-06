@@ -15,4 +15,3 @@ RUN npm run build
 FROM nginxinc/nginx-unprivileged:1.21.6-alpine
 COPY default.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /usr/src/app/dist/kanban-ui /usr/share/nginx/html
-USER 1018510000
