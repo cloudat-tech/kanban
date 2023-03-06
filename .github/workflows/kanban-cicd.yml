@@ -10,7 +10,7 @@ env:
   #OPENSHIFT_TOKEN: ${{ secrets.OPENSHIFT_TOKEN }}
   OPENSHIFT_NAMESPACE: "amol-tapase-dev"
   APP_NAME: "kanban-ui"
-  TAG: "main"
+  TAG: "latest"
 
 #on: [ workflow_dispatch]
 on:
