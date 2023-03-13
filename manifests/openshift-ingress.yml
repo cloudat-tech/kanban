@@ -1,0 +1,28 @@
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: example
+  namespace: amol-tapase-dev
+spec:
+  rules:
+    - host: kanban.cloudat.tech
+      http:
+        paths:
+          - path: /api/
+            pathType: Prefix
+            backend:
+              service:
+                name: kanban-app
+                port:
+                  number: 8080
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: kanban-ui
+                port:
+                  number: 8081
+status:
+  loadBalancer:
+    ingress:
+      - hostname: router-default.apps.sandbox-m2.ll9k.p1.openshiftapps.com
